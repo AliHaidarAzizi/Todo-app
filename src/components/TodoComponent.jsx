@@ -22,8 +22,8 @@ function TodoComponent() {
     };
     return(
     
-            <div className='w-[500px] text-center bg-white p-5 rounded-2xl'>
-                <h1 className='text-4xl font-bold mb-8'>To Do List</h1>
+            <div className='w-[500px] text-center bg-white dark:bg-gray-500 p-5 rounded-2xl'>
+                <h1 className='text-4xl font-bold mb-8 dark:text-white'>To Do List</h1>
                 <form onSubmit={handleForm}>
                 <input className=' border-2 border-gray-200 shadow-sm w-full p-2 placeholder:text-gray-500 rounded-2xl text-center mb-5' 
                 
