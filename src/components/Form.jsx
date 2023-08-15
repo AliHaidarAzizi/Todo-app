@@ -1,7 +1,11 @@
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Form({onSubmitProps}) {
 
+    useEffect(()=> {
+
+
+    }, [])
 
     return(
         <>
