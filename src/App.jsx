@@ -6,7 +6,7 @@ import Modal from './components/Modal'
 import Form from './components/Form'
 
 function App() {
-  const [name, setName] = useState('World')
+  const [name, setName] = useState('')
   const [show, setShow] = useState(false)
 
   const OnSubmitProps1 =(event) => {
@@ -16,10 +16,11 @@ function App() {
     
     setName(newValue)
   }
-  console.log("render")
   useEffect(()=> {
+
     console.log("Name has Changed!")
-    setShow(true)
+
+    name?setShow(true):null
   },[name])
     
 
