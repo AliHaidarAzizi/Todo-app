@@ -30,7 +30,7 @@ function Weather() {
         console.log(latitude,longitude)
         const coordinate = latitude + ',' + longitude
         
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?
 key=780f3da01fd44156923151611232408&q=${coordinate}&aqi=no`)
 
         const data = await response.json()
