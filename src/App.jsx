@@ -4,6 +4,7 @@ import Counter from './components/Counter'
 import TodoComponent from './components/TodoComponent'
 import Modal from './components/Modal'
 import Form from './components/Form'
+import Weather from './components/weather'
 
 function App() {
   const [name, setName] = useState('')
@@ -16,9 +17,7 @@ function App() {
     
     setName(newValue)
   }
-  useEffect((showComponent)=> {
-
-    console.log("Name has Changed!")
+  useEffect(()=> {
 
     name?setShow(true):null
   },[name])
@@ -40,13 +39,13 @@ function App() {
       />}
       {
       show?<div className='flex gap-3 items-center justify-center flex-wrap '>
-          
-              <div className='flex flex-col gap-3 flex-wrap justify-center'>
+              <Weather />
+              {/* <div className='flex flex-col gap-3 flex-wrap justify-center'>
                 <TodoComponent />
                 <Counter />
               </div>
               
-              <Calculator />
+              <Calculator /> */}
 
           </div>
       :null} 

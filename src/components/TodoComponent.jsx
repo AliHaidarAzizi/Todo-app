@@ -13,11 +13,19 @@ function TodoComponent() {
     };
 
     const deleteTodo = (deleteValue) => {
-    const restTodoList = [...todoList.filter((val) => {
-      return val.todoName !== deleteValue;
-    })]
+        const index = todoList.findIndex((val) => 
+        val.todoName === deleteValue);
 
-    setTodoList(restTodoList);
+        if (index !== -1) {
+            const restTodoList = [...todoList];
+            restTodoList.splice(index, 1);
+            setTodoList(restTodoList)
+
+        }
+    // const restTodoList = [...todoList.filter((val) => {
+    //   return val.todoName !== deleteValue;
+    // })]
+
 
     };
     return(
