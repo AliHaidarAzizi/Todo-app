@@ -32,22 +32,26 @@ function App() {
     <div className=' dark:bg-slate-800 min-h-screen flex flex-col items-center justify-center font-sans gap-3 p-4'> 
       <h1 className=' text-white text-5xl mb-2'>Hello {name} 
       </h1>
+      
       {
         show? null : <Form 
               onSubmitProps={OnSubmitProps1}
 
       />}
       {
-      show?<div className='flex gap-3 items-center justify-center flex-wrap '>
+      show?<div className='flex flex-col gap-2 items-center'>
               <Weather />
-              {/* <div className='flex flex-col gap-3 flex-wrap justify-center'>
-                <TodoComponent />
-                <Counter />
-              </div>
-              
-              <Calculator /> */}
+              <div className='flex gap-3 items-center justify-center flex-wrap '>
+                    
+                    <div className='flex flex-col gap-3 flex-wrap justify-center'>
+                      <TodoComponent />
+                      <Counter />
+                    </div>
+                    
+                    <Calculator />
 
-          </div>
+                </div>
+              </div>
       :null} 
     </div>
     </>

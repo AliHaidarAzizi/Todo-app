@@ -1,4 +1,5 @@
 import { useState } from "react"
+import stringMath from "string-math";
 
 
 function Calculator() {
@@ -11,7 +12,7 @@ function Calculator() {
     const deleteEl = () => setResult(result.slice(0, -1));
     const calculate = () => {
         try{
-        setResult(eval(result).toString())
+        setResult(stringMath(result).toString())
         } catch (error) {
         setResult("Error")
         }

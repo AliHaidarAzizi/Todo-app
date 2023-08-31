@@ -1,68 +1,56 @@
 import { useEffect, useState } from "react";
 
 function Weather() {
-    useEffect
+    const [weatherData, setWeatherData] = useState(null)
 
-    // const fetchWeatherForecast = async () => {
+    useEffect(() => {
+        geoFindMe();
+    }, []);
 
-    //     const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=780f3da01fd44156923151611232408&q=${currentCoordinates}&aqi=no`)
-    //     const data = await response.json();
-
-    // }
-    let latitude = "";
-    let longitude = "";
+   
     function geoFindMe() {
-        // const status = document.querySelector("#status");
+        
   
 
         function success(position) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-
-            //  status.textContent = "";
-            console.log(latitude + "," + longitude)
-            fetchData(latitude,longitude)
-            
-        
-        
-        }
-
-        function error() {
-            // status.textContent = "Unable to retrieve your location";
-
-            return('Error detected')
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            fetchData(latitude,longitude) // why we do fetchData(latitude,longitude) not CoordinateData = latitude + ',' + longitude?
         }
 
         if (!navigator.geolocation) {
             return "Geolocation is not supported by your browser";
         } else {
-            // status.textContent = "Locating…";
-            return navigator.geolocation.getCurrentPosition(success, error);
+            return navigator.geolocation.getCurrentPosition(success);
         }
     }
+
  
-     async function fetchData(latitude,longitude) {
+     async function fetchData(latitude,longitude) { //confused due to the above question 
         console.log(latitude,longitude)
         const coordinate = latitude + ',' + longitude
+        
         const response = await fetch(`http://api.weatherapi.com/v1/current.json?
 key=780f3da01fd44156923151611232408&q=${coordinate}&aqi=no`)
 
         const data = await response.json()
-        console.log(data)
-        return data
+        setWeatherData(data)
         
 
     }
 
     
 return (
-        <div>
-            <h2> Currently in Putrajaya</h2>
-            <div>
-                <h3>{}</h3>
-                <h4> </h4>
-                <h3>Condition : </h3>
-                <h3>Temperature : </h3>
+        <div className="text-white flex flex-col items-center">
+            <h2> Currently in {weatherData?.location.name}</h2>
+            <div className="flex gap-2 items-center justify-center">
+                <img src={weatherData?.current.condition.icon} alt="" />
+                <div>
+                <h3 className=" text-xs">Condition : {weatherData?.current.condition.text} </h3>
+                <h3 className="text-xs">Temperature : {weatherData?.current.temp_c}C&#176;
+</h3>
+                </div>
+                
             </div>
 
         </div>
