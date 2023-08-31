@@ -4,7 +4,7 @@ import Counter from './components/Counter'
 import TodoComponent from './components/TodoComponent'
 import Modal from './components/Modal'
 import Form from './components/Form'
-import Weather from './components/weather'
+import Weather from './components/Weather'
 
 function App() {
   const [name, setName] = useState('')
